@@ -4,22 +4,25 @@ on:
     branches:
       - main
 jobs:
-  - name: cd via ssh
-    uses: garygrossgarten/github-action-ssh@release
-    with:
-      command: cd /opt/odoo13/odoo-custom-addons/theme_odoo_experts
-      host: ${{ secrets.HOST }}
-      username: gitpull
-      passphrase: ${{ secrets.PASSPHRASE }}
-      privateKey: ${{ secrets.PRIVATE_KEY}}
-  - name: gitpull via ssh
-    uses: garygrossgarten/github-action-ssh@release
-    with:
-      command: git pull
-      host: ${{ secrets.HOST }}
-      username: gitpull
-      passphrase: ${{ secrets.PASSPHRASE }}
-      privateKey: ${{ secrets.PRIVATE_KEY}}
+  build:
+  runs-on: ubuntu-latest
+  steps:
+    - name: cd via ssh
+      uses: garygrossgarten/github-action-ssh@release
+      with:
+        command: cd /opt/odoo13/odoo-custom-addons/theme_odoo_experts
+        host: ${{ secrets.HOST }}
+        username: gitpull
+        passphrase: ${{ secrets.PASSPHRASE }}
+        privateKey: ${{ secrets.PRIVATE_KEY}}
+    - name: gitpull via ssh
+      uses: garygrossgarten/github-action-ssh@release
+      with:
+        command: git pull
+        host: ${{ secrets.HOST }}
+        username: gitpull
+        passphrase: ${{ secrets.PASSPHRASE }}
+        privateKey: ${{ secrets.PRIVATE_KEY}}
 
   # pulls-ssh:
   #   runs-on: ubuntu-latest
