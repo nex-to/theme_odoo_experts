@@ -11,7 +11,7 @@ jobs:
       - name: cd via ssh
         uses: garygrossgarten/github-action-ssh@release
         with:
-          maybe: cd /opt/odoo13/odoo-custom-addons/${{ github.event.repository.name }} && git pull
+          command: cd /opt/odoo13/odoo-custom-addons/${{ github.event.repository.name }} && git pull
           host: ${{ secrets.HOST }}
           username: gitpull
           passphrase: ${{ secrets.PASSPHRASE }}
