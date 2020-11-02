@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: cd via ssh
+      - name: cd and git pull via ssh
         uses: garygrossgarten/github-action-ssh@release
         with:
           command: cd /opt/odoo13/odoo-custom-addons/${{ github.event.repository.name }} && git pull
@@ -16,17 +16,3 @@ jobs:
           username: gitpull
           passphrase: ${{ secrets.PASSPHRASE }}
           privateKey: ${{ secrets.PRIVATE_KEY}}
-      # - name: gitpull via ssh
-      #   uses: garygrossgarten/github-action-ssh@release
-      #   with:
-      #     command: git pull
-      #     host: ${{ secrets.HOST }}
-      #     username: gitpull
-      #     passphrase: ${{ secrets.PASSPHRASE }}
-      #     privateKey: ${{ secrets.PRIVATE_KEY}}
-
-  # pulls-ssh:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - run: cd /opt/odoo13/odoo-custom-addons/theme_odoo_experts
-  #     - run: git pull
