@@ -2,7 +2,7 @@ name: git-pull
 on:
   push:
     branches:
-      - main
+      - actions/gitpull
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,14 +16,14 @@ jobs:
           username: gitpull
           passphrase: ${{ secrets.PASSPHRASE }}
           privateKey: ${{ secrets.PRIVATE_KEY}}
-      - name: gitpull via ssh
-        uses: garygrossgarten/github-action-ssh@release
-        with:
-          command: git pull
-          host: ${{ secrets.HOST }}
-          username: gitpull
-          passphrase: ${{ secrets.PASSPHRASE }}
-          privateKey: ${{ secrets.PRIVATE_KEY}}
+      # - name: gitpull via ssh
+      #   uses: garygrossgarten/github-action-ssh@release
+      #   with:
+      #     command: git pull
+      #     host: ${{ secrets.HOST }}
+      #     username: gitpull
+      #     passphrase: ${{ secrets.PASSPHRASE }}
+      #     privateKey: ${{ secrets.PRIVATE_KEY}}
 
   # pulls-ssh:
   #   runs-on: ubuntu-latest
